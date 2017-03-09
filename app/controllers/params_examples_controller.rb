@@ -32,4 +32,17 @@ class ParamsExamplesController < ApplicationController
     end
     render "guess_query.html.erb"
   end
+
+  def guess_url_segment_method
+    @guess = params["the_users_guess"].to_i
+    winning_number = 32
+    if @guess > winning_number
+      @message = "Pick lower!"
+    elsif @guess < winning_number
+      @message = "Pick higher!"
+    else
+      @message = "You won!"
+    end
+    render "guess_url_segment.html.erb"
+  end
 end
